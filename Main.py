@@ -201,45 +201,45 @@ print('GNB accuracy = ' + str('{:4.2f}'.format(accuracy_score*100))+'%')
 
 
 
-#X_train, X_test, y_train, y_test = train_test_split(count_vec_out, dataset['sentiment'], test_size=0.3, random_state=123)
-#print(len(y_train))
-#print(len(y_test))
+X_train, X_test, y_train, y_test = train_test_split(count_vec_out, dataset['sentiment'], test_size=0.3, random_state=123)
+print(len(y_train))
+print(len(y_test))
 
-#classifier_1  = MultinomialNB().fit(X_train, y_train)
-#predicted_1= classifier_1.predict(X_test)
-#print(y_test)
-#print(predicted)
-#print(classifier_1.score(X_test,y_test))
-#print("%0.2f accuracy for Binary" % (classifier_1.score(X_test,y_test)))
-#print(classifier.score(X_train,y_train))
+classifier_1  = MultinomialNB().fit(X_train, y_train)
+predicted_1= classifier_1.predict(X_test)
+print(y_test)
+print(predicted)
+print(classifier_1.score(X_test,y_test))
+print("%0.2f accuracy for Binary" % (classifier_1.score(X_test,y_test)))
+print(classifier.score(X_train,y_train))
 
-#print("----------------classification report----------------")
+print("----------------classification report----------------")
 
 
 print(confusion_matrix(y_test, predicted))
-#plot_confusion_matrix(classifier, X_test, y_test )
-#plt.show()
+plot_confusion_matrix(classifier, X_test, y_test )
+plt.show()
 target_names = ['Positive','Negative','Neurtal']
 print(classification_report(y_test, predicted,target_names=target_names))
 
 
-#######scores =cross_val_score(classifier, count_vec_out_standard, dataset['sentiment'], cv=10)
-########print( scores )
-############print("%0.2f accuracy with a standard deviation of %0.2f" % (scores.mean(), scores.std()))
+scores =cross_val_score(classifier, count_vec_out_standard, dataset['sentiment'], cv=10)
+print( scores )
+print("%0.2f accuracy with a standard deviation of %0.2f" % (scores.mean(), scores.std()))
 
-#scores_1 = cross_val_score(classifier, count_vec_out_standard,dataset['sentiment'], cv=10, scoring='f1_macro')
-#print(scores_1)
-#print("%0.2f F1_macro with a standard deviation of %0.2f" % (scores_1.mean(), scores_1.std()))
+scores_1 = cross_val_score(classifier, count_vec_out_standard,dataset['sentiment'], cv=10, scoring='f1_macro')
+print(scores_1)
+print("%0.2f F1_macro with a standard deviation of %0.2f" % (scores_1.mean(), scores_1.std()))
 
-#cv = KFold(n_splits=10, random_state=123, shuffle=True)
+cv = KFold(n_splits=10, random_state=123, shuffle=True)
 
-#score_2 = cross_val_score(classifier, count_vec_out_standard, dataset['sentiment'], cv=cv)
-#print(score_2)
-#print("%0.2f accuracy for Kfold with a standard deviation of %0.2f" % (score_2.mean(), score_2.std()))
+score_2 = cross_val_score(classifier, count_vec_out_standard, dataset['sentiment'], cv=cv)
+print(score_2)
+print("%0.2f accuracy for Kfold with a standard deviation of %0.2f" % (score_2.mean(), score_2.std()))
 
 
-#cv_2=LeaveOneOut()
-#score_3 =cross_val_score(classifier, count_vec_out_standard, dataset['sentiment'], cv=cv_2)
-#print(score_3)
+cv_2=LeaveOneOut()
+score_3 =cross_val_score(classifier, count_vec_out_standard, dataset['sentiment'], cv=cv_2)
+print(score_3)
 
-#print(mean(absolute(scores_3)))
+print(mean(absolute(scores_3)))
